@@ -1,13 +1,17 @@
 package br.com.estudo.models;
 
 import io.micronaut.core.annotation.Introspected;
-import lombok.Data;
+import io.micronaut.data.annotation.MappedEntity;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "todos")
 @Introspected
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Todo {
 
     @Id
