@@ -1,8 +1,15 @@
 micronaut:
-  application:
-    name: estudo
-  server:
-    port: 8080
+  security:
+    endpoints:
+      login:
+        enabled: true
+    authentication: bearer
+    token:
+      jwt:
+        signatures:
+          secret:
+            generator:
+              secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}"'
   router:
     static-resources:
       swagger:
@@ -13,12 +20,10 @@ micronaut:
         mapping: /swagger-ui/**
 datasources:
   default:
-    url: jdbc:h2:mem:devDb;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
-    driverClassName: org.h2.Driver
-    username: sa
-    password: ''
-    schema-generate: CREATE_DROP
-    dialect: H2
+    url: jdbc:postgresql://localhost:5432/micronaut
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: '1010100'
 jpa.default:
   entity-scan:
     packages: br.com.estudo.models
