@@ -1,9 +1,9 @@
-package br.com.estudo.repositories.impl;
+package br.com.estudo.domain.repositories.impl;
 
-import br.com.estudo.models.Todo;
-import br.com.estudo.repositories.TodoRepository;
-import br.com.estudo.repositories.TodoRepositoryJpa;
-import br.com.estudo.repositories.params.TodoParams;
+import br.com.estudo.domain.models.Todo;
+import br.com.estudo.domain.repositories.TodoRepository;
+import br.com.estudo.domain.repositories.TodoRepositoryJpa;
+import br.com.estudo.domain.repositories.params.TodoParams;
 import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
@@ -55,6 +55,21 @@ public class TodoRepositoryImpl implements TodoRepository {
     @Override
     public Todo save(Todo todo) {
         return todoRepositoryJpa.save(todo);
+    }
+
+    @Override
+    public Todo findById(Long id) {
+        return todoRepositoryJpa.findById(id).orElseThrow();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        todoRepositoryJpa.deleteById(id);
+    }
+
+    @Override
+    public Todo update(Todo todo) {
+        return todoRepositoryJpa.update(todo);
     }
 
 }

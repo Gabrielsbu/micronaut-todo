@@ -1,4 +1,4 @@
-package br.com.estudo.dtos;
+package br.com.estudo.domain.dtos;
 
 import lombok.Data;
 

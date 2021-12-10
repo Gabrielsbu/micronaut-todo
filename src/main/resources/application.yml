@@ -26,6 +26,6 @@ datasources:
     password: '1010100'
 jpa.default:
   entity-scan:
-    packages: br.com.estudo.models
+    packages: br.com.estudo.domain.models
   properties.hibernate.hbm2ddl.auto: update
 

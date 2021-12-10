@@ -1,4 +1,4 @@
-package br.com.estudo.repositories.params;
+package br.com.estudo.domain.repositories.params;
 
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.http.annotation.QueryValue;

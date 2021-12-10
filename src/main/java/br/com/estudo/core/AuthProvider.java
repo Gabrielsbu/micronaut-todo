@@ -1,7 +1,7 @@
 package br.com.estudo.core;
 
-import br.com.estudo.models.User;
-import br.com.estudo.repositories.UserRepository;
+import br.com.estudo.domain.models.User;
+import br.com.estudo.domain.repositories.UserRepository;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.security.authentication.AuthenticationProvider;
 import io.micronaut.security.authentication.AuthenticationRequest;
