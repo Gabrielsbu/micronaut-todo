@@ -1,7 +1,6 @@
 package br.com.estudo.domain.services.Impl;
 
 import br.com.estudo.domain.dtos.UpdateUserDTO;
-import br.com.estudo.domain.models.Todo;
 import br.com.estudo.domain.models.User;
 import br.com.estudo.domain.repositories.UserRepository;
 import br.com.estudo.domain.repositories.params.UserParams;

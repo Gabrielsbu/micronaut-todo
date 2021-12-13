@@ -8,9 +8,12 @@ import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
+import io.micronaut.security.annotation.Secured;
 import jakarta.inject.Inject;
+import static io.micronaut.security.rules.SecurityRule.*;
 
 @Controller("/todos")
+@Secured(IS_AUTHENTICATED)
 public class TodoController {
 
     @Inject
