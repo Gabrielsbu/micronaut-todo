@@ -21,7 +21,6 @@ public class UserController {
     private UserService userService;
 
     @Get
-
     public Page<User> getUsers(@RequestBean UserParams params, Pageable pageable){
         return userService.getAllUsers(params, pageable);
     }
@@ -32,6 +31,7 @@ public class UserController {
     }
 
     @Post
+    @Secured("isAnonymous()")
     public User saveUser(User user){
         return userService.createUser(user);
     }

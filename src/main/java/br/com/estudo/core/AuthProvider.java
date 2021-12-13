@@ -9,6 +9,7 @@ import io.micronaut.security.authentication.AuthenticationResponse;
 import jakarta.inject.Singleton;
 import lombok.RequiredArgsConstructor;
 import org.reactivestreams.Publisher;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
 import reactor.util.annotation.Nullable;
@@ -24,10 +25,11 @@ public class AuthProvider implements AuthenticationProvider {
                                                           AuthenticationRequest<?, ?> authenticationRequest) {
 
         User user = userRepository.findByEmail(authenticationRequest.getIdentity().toString());
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
         return Flux.create(emitter -> {
             if (authenticationRequest.getIdentity().equals(user.getEmail()) &&
-                    authenticationRequest.getSecret().equals(user.getPassword())) {
+                    bCryptPasswordEncoder.matches(authenticationRequest.getSecret().toString(), user.getPassword())) {
                 emitter.next(AuthenticationResponse.success((String) authenticationRequest.getIdentity()));
                 emitter.complete();
             } else {

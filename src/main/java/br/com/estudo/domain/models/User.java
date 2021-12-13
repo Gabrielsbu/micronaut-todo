@@ -27,4 +27,7 @@ public class User {
     @Column
     @Size(min = 6)
     private String password;
+
+    @Column
+    private String roles;
 }
