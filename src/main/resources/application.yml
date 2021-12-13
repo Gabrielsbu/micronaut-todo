@@ -37,4 +37,8 @@ jpa.default:
   entity-scan:
     packages: br.com.estudo.domain.models
   properties.hibernate.hbm2ddl.auto: update
+flyway:
+  datasources:
+    default:
+      enabled: true
 
