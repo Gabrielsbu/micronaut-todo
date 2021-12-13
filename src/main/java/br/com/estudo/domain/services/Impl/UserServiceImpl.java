@@ -1,10 +1,12 @@
 package br.com.estudo.domain.services.Impl;
 
 import br.com.estudo.domain.dtos.UpdateUserDTO;
+import br.com.estudo.domain.dtos.UserDTO;
 import br.com.estudo.domain.models.User;
 import br.com.estudo.domain.repositories.UserRepository;
 import br.com.estudo.domain.repositories.params.UserParams;
 import br.com.estudo.domain.services.UserService;
+import br.com.estudo.domain.utils.converterDTO.users.UserMapper;
 import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
 import io.micronaut.http.HttpResponse;
@@ -17,6 +19,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
     @Override
     public Page<User> getAllUsers(UserParams params, Pageable pageable) {
@@ -32,13 +35,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserById(Long id) {
-        return userRepository.findById(id);
+    public UserDTO getUserById(Long id) {
+        User user = userRepository.findById(id);
+        return userMapper.toDto(user);
     }
 
     @Override
     public HttpResponse<Void> deleteUserById(Long id) {
-        User user = getUserById(id);
+        User user = userRepository.findById(id);
 
         userRepository.deleteById(user.getId());
 
@@ -47,7 +51,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateUser(Long id, UpdateUserDTO updateUserDTO) {
-        User userExistent = getUserById(id);
+        User userExistent = userRepository.findById(id);
         userExistent.setEmail(updateUserDTO.getEmail());
         userExistent.setPassword(updateUserDTO.getPassword());
 

@@ -1,6 +1,7 @@
 package br.com.estudo.controllers;
 
 import br.com.estudo.domain.dtos.UpdateUserDTO;
+import br.com.estudo.domain.dtos.UserDTO;
 import br.com.estudo.domain.models.User;
 import br.com.estudo.domain.repositories.params.UserParams;
 import br.com.estudo.domain.services.UserService;
@@ -26,7 +27,7 @@ public class UserController {
     }
 
     @Get("/{id}")
-    public User getUserById(@PathVariable Long id){
+    public UserDTO getUserById(@PathVariable Long id){
         return userService.getUserById(id);
     }
 

@@ -1,6 +1,7 @@
 package br.com.estudo.domain.services;
 
 import br.com.estudo.domain.dtos.UpdateUserDTO;
+import br.com.estudo.domain.dtos.UserDTO;
 import br.com.estudo.domain.models.User;
 import br.com.estudo.domain.repositories.params.UserParams;
 import io.micronaut.data.model.Page;
@@ -12,7 +13,7 @@ public interface UserService {
 
     User createUser(User user);
 
-    User getUserById(Long id);
+    UserDTO getUserById(Long id);
 
     HttpResponse<Void> deleteUserById(Long id);
 
