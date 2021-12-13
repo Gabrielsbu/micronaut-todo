@@ -25,11 +25,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(User user) {
-//        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-//
-//        String password = bCryptPasswordEncoder.encode(user.getPassword());
-//        user.setPassword(password);
-
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);

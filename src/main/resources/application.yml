@@ -4,6 +4,15 @@ micronaut:
       login:
         enabled: true
     authentication: bearer
+    interceptUrlMap:
+      - pattern: "/swagger/**"
+        httpMethod: GET
+        access:
+          - isAnonymous()
+      - pattern: "/swagger-ui/**"
+        httpMethod: GET
+        access:
+          - isAnonymous()
     token:
       jwt:
         signatures:
