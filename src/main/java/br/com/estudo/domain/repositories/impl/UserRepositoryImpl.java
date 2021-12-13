@@ -1,5 +1,6 @@
 package br.com.estudo.domain.repositories.impl;
 
+import br.com.estudo.domain.exceptions.GlobalException;
 import br.com.estudo.domain.models.Todo;
 import br.com.estudo.domain.models.User;
 import br.com.estudo.domain.repositories.TodoRepository;
@@ -11,6 +12,8 @@ import br.com.estudo.domain.repositories.params.UserParams;
 import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
+import io.micronaut.http.HttpStatus;
+import io.netty.handler.codec.http.HttpResponseStatus;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.EntityManager;
@@ -34,7 +37,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findById(Long id) {
-        return userRepositoryJpa.findById(id).orElseThrow();
+        return userRepositoryJpa.findById(id).orElseThrow(() -> new GlobalException("User not found", HttpStatus.NOT_FOUND));
     }
 
     @Override

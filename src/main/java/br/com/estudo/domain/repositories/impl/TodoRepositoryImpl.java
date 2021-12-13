@@ -1,5 +1,6 @@
 package br.com.estudo.domain.repositories.impl;
 
+import br.com.estudo.domain.exceptions.GlobalException;
 import br.com.estudo.domain.models.Todo;
 import br.com.estudo.domain.repositories.TodoRepository;
 import br.com.estudo.domain.repositories.TodoRepositoryJpa;
@@ -7,6 +8,7 @@ import br.com.estudo.domain.repositories.params.TodoParams;
 import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
+import io.micronaut.http.HttpStatus;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.EntityManager;
@@ -59,7 +61,7 @@ public class TodoRepositoryImpl implements TodoRepository {
 
     @Override
     public Todo findById(Long id) {
-        return todoRepositoryJpa.findById(id).orElseThrow();
+        return todoRepositoryJpa.findById(id).orElseThrow(() -> new GlobalException("User not found", HttpStatus.NOT_FOUND));
     }
 
     @Override
