@@ -25,7 +25,7 @@ public class TodoController {
     }
 
     @Post
-    public HttpResponse<Todo> addTodo(Todo todo){
+    public HttpResponse<Todo> addTodo(@Body Todo todo){
         return HttpResponse.created(todoService.createTodo(todo));
     }
 
@@ -40,12 +40,12 @@ public class TodoController {
     }
 
     @Put("/{id}")
-    public Todo updateTodo(@PathVariable Long id, Todo todo){
+    public Todo updateTodo(@PathVariable Long id, @Body Todo todo){
         return todoService.updateTodo(id, todo);
     }
 
     @Patch("/{id}")
-    public Todo updateStatusTodo(@PathVariable Long id, UpdateTodoDTO updateTodoDTO) {
+    public Todo updateStatusTodo(@PathVariable Long id, @Body UpdateTodoDTO updateTodoDTO) {
         return todoService.alterStateTodo(id, updateTodoDTO);
     }
 }

@@ -33,12 +33,12 @@ public class UserController {
 
     @Post
     @Secured("isAnonymous()")
-    public User saveUser(User user){
+    public User saveUser(@Body User user){
         return userService.createUser(user);
     }
 
     @Put("/{id}")
-    public User updateUser(@PathVariable Long id, UpdateUserDTO updateUserDTO){
+    public User updateUser(@PathVariable Long id, @Body UpdateUserDTO updateUserDTO){
         return userService.updateUser(id, updateUserDTO);
     }
 
