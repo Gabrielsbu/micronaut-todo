@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @Post
-    @Secured("isAnonymous()")
+    @Secured("isAnonymous()")//TODO: Criar um UsarDTO para não precisar enviar o createdAt, updatedAt e ID
     public User saveUser(@Body User user){
         return userService.createUser(user);
     }

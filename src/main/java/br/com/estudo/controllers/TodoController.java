@@ -29,8 +29,8 @@ public class TodoController {
         return HttpResponse.created(todoService.createTodo(todo));
     }
 
-    @Get("/{id}")
-    public Todo findOne(@PathVariable Long id){
+    @Get("/{id}")//TODO: Quando o Path Param tem o mesmo nome da váriavel (id) não é necessário colocar a anotação @PathVariable
+    public Todo findOne(Long id){
         return todoService.getTodoById(id);
     }
 

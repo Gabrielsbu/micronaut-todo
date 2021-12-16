@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(User user) {
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();//TODO: sempre recomendo isolar esse processo, por que possívelmente vai ser usado em outros lugares
         String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         return userRepository.save(user);
@@ -40,6 +40,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.toDto(user);
     }
 
+    /*
+     * TODO: a camada de service não deve retornar algo no formato do controller(HttResponse),
+     *  Por que em tese a camada service deve servir para qualquer gateway(fila, Rest, Graphql...)
+     */
     @Override
     public HttpResponse<Void> deleteUserById(Long id) {
         User user = userRepository.findById(id);

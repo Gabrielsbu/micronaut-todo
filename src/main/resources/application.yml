@@ -42,3 +42,6 @@ flyway:
     default:
       enabled: true
 
+#TODO: Com esse configuraçao abaixo o micronaut formata todas as datas de resposta no JSON (LocalDate, LocalDateTime)
+jackson:
+  date-format: 'yyyy-MM-dd HH:mm:ss'

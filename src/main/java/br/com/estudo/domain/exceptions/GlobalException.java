@@ -5,7 +5,10 @@ import lombok.Getter;
 
 import java.io.Serial;
 import java.io.Serializable;
-
+/*
+ * Não recomendo usar um GlobalException, pois quem está chamando o método vai precisar
+ * entrar na implementação para poder entender o erro, com isso deixando o código menos legivel.
+ */
 @Getter
 public class GlobalException extends RuntimeException implements Serializable {
 

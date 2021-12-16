@@ -19,7 +19,7 @@ public class CustomExceptionHandler
         ErrorMessage message = new ErrorMessage();
         message.setMessage(exception.getMessage());
         message.setStatus(exception.getStatus().getCode());
-        return HttpResponse.serverError(message).
-                status(exception.getStatus());
+        return HttpResponse.status(exception.getStatus())
+                .body(message);//TODO: essa é a forma correta de utilizar o HttpResponse, com o .serverError() você está jogando o status 500 e depois mudando.
     }
 }
