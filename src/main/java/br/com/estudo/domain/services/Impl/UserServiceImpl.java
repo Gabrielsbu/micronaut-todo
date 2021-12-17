@@ -36,8 +36,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO getUserById(Long id) {
-        return userConverter.toDTO(userRepository.findById(id));
+    public UserDTO getUserById(Long userId) {
+        return userConverter.toDTO(userRepository.findById(userId));
     }
 
     @Override
@@ -51,16 +51,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public HttpResponse<Void> deleteUserById(Long id) {
-        User user = userRepository.findById(id);
+    public HttpResponse<Void> deleteUserById(Long userId) {
+        User user = userRepository.findById(userId);
         userRepository.deleteById(user.getUserId());
 
         return HttpResponse.noContent();
     }
 
     @Override
-    public User updateUser(Long id, UpdateUserDTO updateUserDTO) {
-        User userExistent = userRepository.findById(id);
+    public User updateUser(Long userId, UpdateUserDTO updateUserDTO) {
+        User userExistent = userRepository.findById(userId);
         String encodedPassword = updateUserDTO.getPassword();
 
         if(updateUserDTO.getPassword() != null) {

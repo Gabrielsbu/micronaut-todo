@@ -14,9 +14,9 @@ public interface UserService {
 
     User createUser(CreateUserDTO user);
 
-    UserDTO getUserById(Long id);
+    UserDTO getUserById(Long userId);
 
-    HttpResponse<Void> deleteUserById(Long id);
+    HttpResponse<Void> deleteUserById(Long userId);
 
-    User updateUser(Long id, UpdateUserDTO updateUserDTO);
+    User updateUser(Long userId, UpdateUserDTO updateUserDTO);
 }

@@ -27,9 +27,9 @@ public class UserController {
         return userService.getAllUsers(params, pageable);
     }
 
-    @Get("/{id}")
-    public UserDTO getUserById(@PathVariable Long id){
-        return userService.getUserById(id);
+    @Get("/{userId}")
+    public UserDTO getUserById(@PathVariable Long userId){
+        return userService.getUserById(userId);
     }
 
     @Post
@@ -38,13 +38,13 @@ public class UserController {
         return userService.createUser(user);
     }
 
-    @Put("/{id}")
-    public User updateUser(@PathVariable Long id, @Body UpdateUserDTO updateUserDTO){
-        return userService.updateUser(id, updateUserDTO);
+    @Put("/{userId}")
+    public User updateUser(@PathVariable Long userId, @Body UpdateUserDTO updateUserDTO){
+        return userService.updateUser(userId, updateUserDTO);
     }
 
-    @Delete("/{id}")
-    public HttpResponse<Void> deleteUserById(@PathVariable Long id){
-        return userService.deleteUserById(id);
+    @Delete("/{userId}")
+    public HttpResponse<Void> deleteUserById(@PathVariable Long userId){
+        return userService.deleteUserById(userId);
     }
 }

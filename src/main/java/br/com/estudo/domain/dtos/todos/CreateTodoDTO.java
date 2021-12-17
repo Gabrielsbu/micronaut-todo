@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder(setterPrefix = "set")
 public class CreateTodoDTO {
-    private Long userId;
+    private Long todoId;
     private String description;
     private Integer days;
 }

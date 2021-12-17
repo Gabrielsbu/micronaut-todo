@@ -60,13 +60,13 @@ public class TodoRepositoryImpl implements TodoRepository {
     }
 
     @Override
-    public Todo findById(Long id) {
-        return todoRepositoryJpa.findById(id).orElseThrow(() -> new GlobalException("Todo not found", HttpStatus.NOT_FOUND));
+    public Todo findById(Long todoId) {
+        return todoRepositoryJpa.findById(todoId).orElseThrow(() -> new GlobalException("Todo not found", HttpStatus.NOT_FOUND));
     }
 
     @Override
-    public void deleteById(Long id) {
-        todoRepositoryJpa.deleteById(id);
+    public void deleteById(Long todoId) {
+        todoRepositoryJpa.deleteById(todoId);
     }
 
     @Override

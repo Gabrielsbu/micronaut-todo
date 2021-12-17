@@ -32,13 +32,13 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
-    public TodoDTO getTodoById(Long id) {
-        return todoConverter.toDTO(todoRepository.findById(id));
+    public TodoDTO getTodoById(Long userId) {
+        return todoConverter.toDTO(todoRepository.findById(userId));
     }
 
     @Override
     public Todo createTodo(CreateTodoDTO createTodoDTO) {
-        User user = userRepository.findById(createTodoDTO.getUserId());
+        User user = userRepository.findById(createTodoDTO.getTodoId());
 
         Todo todo = new Todo();
         todo.setDescription(createTodoDTO.getDescription());
@@ -52,8 +52,8 @@ public class TodoServiceImpl implements TodoService {
 
 
     @Override
-    public HttpResponse<Void> deleteTodoById(Long id) {
-        Todo todo = todoRepository.findById(id);
+    public HttpResponse<Void> deleteTodoById(Long todoId) {
+        Todo todo = todoRepository.findById(todoId);
 
         todoRepository.deleteById(todo.getTodoId());
 
@@ -61,16 +61,16 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
-    public Todo alterStateTodo(Long id, UpdateTodoDTO updateTodoDTO) {
-        Todo todoExistent = todoRepository.findById(id);
+    public Todo alterStateTodo(Long todoId, UpdateTodoDTO updateTodoDTO) {
+        Todo todoExistent = todoRepository.findById(todoId);
         todoExistent.setDone(updateTodoDTO.getDone());
 
         return todoRepository.update(todoExistent);
     }
 
     @Override
-    public Todo updateTodo(Long id, Todo todo) {
-        Todo todoExistent = todoRepository.findById(id);
+    public Todo updateTodo(Long todoId, Todo todo) {
+        Todo todoExistent = todoRepository.findById(todoId);
         todoExistent.setDescription(todo.getDescription());
         todoExistent.setDone(todo.getDone());
 

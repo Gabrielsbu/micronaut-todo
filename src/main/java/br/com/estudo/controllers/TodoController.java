@@ -31,23 +31,23 @@ public class TodoController {
         return HttpResponse.created(todoService.createTodo(todo));
     }
 
-    @Get("/{id}")
-    public TodoDTO findOne(@PathVariable Long id){
-        return todoService.getTodoById(id);
+    @Get("/{todoId}")
+    public TodoDTO findOne(@PathVariable Long todoId){
+        return todoService.getTodoById(todoId);
     }
 
-    @Delete("/{id}")
-    public HttpResponse<Void> deleteById(@PathVariable Long id){
-        return todoService.deleteTodoById(id);
+    @Delete("/{todoId}")
+    public HttpResponse<Void> deleteById(@PathVariable Long todoId){
+        return todoService.deleteTodoById(todoId);
     }
 
-    @Put("/{id}")
-    public Todo updateTodo(@PathVariable Long id, @Body Todo todo){
-        return todoService.updateTodo(id, todo);
+    @Put("/{todoId}")
+    public Todo updateTodo(@PathVariable Long todoId, @Body Todo todo){
+        return todoService.updateTodo(todoId, todo);
     }
 
-    @Patch("/{id}")
-    public Todo updateStatusTodo(@PathVariable Long id, @Body UpdateTodoDTO updateTodoDTO) {
-        return todoService.alterStateTodo(id, updateTodoDTO);
+    @Patch("/{todoId}")
+    public Todo updateStatusTodo(@PathVariable Long todoId, @Body UpdateTodoDTO updateTodoDTO) {
+        return todoService.alterStateTodo(todoId, updateTodoDTO);
     }
 }

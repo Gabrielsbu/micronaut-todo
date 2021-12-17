@@ -11,8 +11,8 @@ public interface UserRepository {
 
     Page<User> searchAllUsers(UserParams params, Pageable pageable);
     User save(User user);
-    User findById(Long id);
-    void deleteById(Long id);
+    User findById(Long userId);
+    void deleteById(Long userId);
     User update(User user);
 
     User findByEmail(String email);

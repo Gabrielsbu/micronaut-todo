@@ -15,9 +15,9 @@ public interface TodoRepository {
 
     Todo save(@Valid @NotNull Todo todo);
 
-    Todo findById(Long id);
+    Todo findById(Long todoId);
 
-    void deleteById(Long id);
+    void deleteById(Long todoId);
 
     Todo update(Todo todo);
 }

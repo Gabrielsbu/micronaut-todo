@@ -36,13 +36,13 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User findById(Long id) {
-        return userRepositoryJpa.findById(id).orElseThrow(() -> new GlobalException("User not found", HttpStatus.NOT_FOUND));
+    public User findById(Long userId) {
+        return userRepositoryJpa.findById(userId).orElseThrow(() -> new GlobalException("User not found", HttpStatus.NOT_FOUND));
     }
 
     @Override
-    public void deleteById(Long id) {
-        userRepositoryJpa.deleteById(id);
+    public void deleteById(Long userId) {
+        userRepositoryJpa.deleteById(userId);
     }
 
     @Override

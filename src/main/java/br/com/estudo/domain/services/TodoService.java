@@ -14,11 +14,11 @@ public interface TodoService {
 
     Todo createTodo(CreateTodoDTO todo);
 
-    TodoDTO getTodoById(Long id);
+    TodoDTO getTodoById(Long todoId);
 
-    HttpResponse<Void> deleteTodoById(Long id);
+    HttpResponse<Void> deleteTodoById(Long todoId);
 
-    Todo alterStateTodo(Long id, UpdateTodoDTO updateTodoDTO);
+    Todo alterStateTodo(Long todoId, UpdateTodoDTO updateTodoDTO);
 
-    Todo updateTodo(Long id, Todo todo);
+    Todo updateTodo(Long todoId, Todo todo);
 }
