@@ -40,6 +40,7 @@ dependencies {
     implementation("io.micronaut.reactor:micronaut-reactor-http-client")
 
     compileOnly("org.projectlombok:lombok")
+    compileOnly("com.google.code.findbugs:jsr305")
     runtimeOnly("org.postgresql:postgresql")
     runtimeOnly("ch.qos.logback:logback-classic")
 
