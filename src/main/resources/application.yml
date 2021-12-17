@@ -33,12 +33,15 @@ datasources:
     driverClassName: org.postgresql.Driver
     username: postgres
     password: '1010100'
-jpa.default:
-  entity-scan:
-    packages: br.com.estudo.domain.models
-  properties.hibernate.hbm2ddl.auto: update
+jpa:
+  default:
+    entity-scan:
+      packages: br.com.estudo.domain.models
+    properties.hibernate.hbm2ddl.auto: update
 flyway:
   datasources:
     default:
-      enabled: true
+      enabled: false
 
+jackson:
+  date-format: 'yyyy-MM-dd HH:mm:ss'

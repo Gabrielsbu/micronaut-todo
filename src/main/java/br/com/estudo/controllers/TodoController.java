@@ -1,6 +1,8 @@
 package br.com.estudo.controllers;
 
-import br.com.estudo.domain.dtos.UpdateTodoDTO;
+import br.com.estudo.domain.dtos.todos.CreateTodoDTO;
+import br.com.estudo.domain.dtos.todos.TodoDTO;
+import br.com.estudo.domain.dtos.todos.UpdateTodoDTO;
 import br.com.estudo.domain.models.Todo;
 import br.com.estudo.domain.repositories.params.TodoParams;
 import br.com.estudo.domain.services.TodoService;
@@ -25,12 +27,12 @@ public class TodoController {
     }
 
     @Post
-    public HttpResponse<Todo> addTodo(@Body Todo todo){
+    public HttpResponse<Todo> addTodo(@Body CreateTodoDTO todo){
         return HttpResponse.created(todoService.createTodo(todo));
     }
 
     @Get("/{id}")
-    public Todo findOne(@PathVariable Long id){
+    public TodoDTO findOne(@PathVariable Long id){
         return todoService.getTodoById(id);
     }
 

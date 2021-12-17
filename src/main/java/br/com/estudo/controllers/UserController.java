@@ -1,7 +1,8 @@
 package br.com.estudo.controllers;
 
-import br.com.estudo.domain.dtos.UpdateUserDTO;
-import br.com.estudo.domain.dtos.UserDTO;
+import br.com.estudo.domain.dtos.users.CreateUserDTO;
+import br.com.estudo.domain.dtos.users.UpdateUserDTO;
+import br.com.estudo.domain.dtos.users.UserDTO;
 import br.com.estudo.domain.models.User;
 import br.com.estudo.domain.repositories.params.UserParams;
 import br.com.estudo.domain.services.UserService;
@@ -22,7 +23,7 @@ public class UserController {
     private UserService userService;
 
     @Get
-    public Page<User> getUsers(@RequestBean UserParams params, Pageable pageable){
+    public Page<UserDTO> getUsers(@RequestBean UserParams params, Pageable pageable){
         return userService.getAllUsers(params, pageable);
     }
 
@@ -33,7 +34,7 @@ public class UserController {
 
     @Post
     @Secured("isAnonymous()")
-    public User saveUser(@Body User user){
+    public User saveUser(@Body CreateUserDTO user){
         return userService.createUser(user);
     }
 

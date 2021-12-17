@@ -2,6 +2,7 @@ package br.com.estudo.core;
 
 import br.com.estudo.domain.models.User;
 import br.com.estudo.domain.repositories.UserRepository;
+import io.micronaut.core.annotation.Nullable;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.security.authentication.AuthenticationProvider;
 import io.micronaut.security.authentication.AuthenticationRequest;
@@ -12,7 +13,6 @@ import org.reactivestreams.Publisher;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
-import reactor.util.annotation.Nullable;
 
 @Singleton
 @RequiredArgsConstructor

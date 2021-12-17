@@ -1,11 +1,14 @@
 package br.com.estudo.domain.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.micronaut.core.annotation.Introspected;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "users")
 @Introspected
@@ -13,12 +16,11 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long userId;
 
     @Column
     private String email;
@@ -27,8 +29,11 @@ public class User {
     @Size(min = 6)
     private String password;
 
-    @Builder.Default
-    private String role = "VIEW";
+    private String role;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private Set<Todo> todos = new HashSet<>();
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

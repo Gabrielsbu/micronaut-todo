@@ -61,7 +61,7 @@ public class TodoRepositoryImpl implements TodoRepository {
 
     @Override
     public Todo findById(Long id) {
-        return todoRepositoryJpa.findById(id).orElseThrow(() -> new GlobalException("User not found", HttpStatus.NOT_FOUND));
+        return todoRepositoryJpa.findById(id).orElseThrow(() -> new GlobalException("Todo not found", HttpStatus.NOT_FOUND));
     }
 
     @Override
